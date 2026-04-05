@@ -110,10 +110,8 @@
   </div>
 
   <script>
-    /* ── POKEMON DATA ────────────────────────────────────────────
-       basePrice = Small price. Each size adds a fixed increment.
-       sizePrices: { label, value, price }
-    ──────────────────────────────────────────────────────────── */
+    
+       
     const POKEMONS = [
       { name:'Charizard', img:'charizard.png', type:'fire',     typeLabel:'🔥 Fire / Flying', anim:'anim-float',
         desc:'A fearsome Fire-type dragon with blazing wings. Captured mid-roar surrounded by real flame effects.',
@@ -154,7 +152,7 @@
       return offset !== undefined ? basePrice + offset : basePrice;
     }
 
-    /* ── BUILD CARDS ─────────────────────────────────────────── */
+   
     function buildCards() {
       const grid = document.getElementById('pokemon-grid');
       POKEMONS.forEach((p, idx) => {
@@ -193,7 +191,7 @@
       });
     }
 
-    /* ── SIZE CHANGE → UPDATE LIVE PRICE ────────────────────── */
+    
     function onSizeChange(idx) {
       const p        = POKEMONS[idx];
       const sizeVal  = document.getElementById(`size-${idx}`).value;
@@ -208,7 +206,7 @@
       }
     }
 
-    /* ── QTY STEPPER ─────────────────────────────────────────── */
+    
     function pkmQty(btn, delta) {
       const input = btn.parentElement.querySelector('.pkm-qty-input');
       let val = parseInt(input.value) || 1;
@@ -216,7 +214,7 @@
       input.value = val;
     }
 
-    /* ── CART HELPERS ─────────────────────────────────────────── */
+    
     function loadCart() {
       try { return JSON.parse(localStorage.getItem('pkm_cart') || '[]'); } catch { return []; }
     }
@@ -228,7 +226,7 @@
       document.getElementById('nav-cart-count').textContent = total;
     }
 
-    /* ── ADD TO CART ─────────────────────────────────────────── */
+    
     function addToCart(idx) {
       const p      = POKEMONS[idx];
       const sizeEl = document.getElementById(`size-${idx}`);
