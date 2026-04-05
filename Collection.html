@@ -3,376 +3,266 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Checkout — John Rey's PokéMerch</title>
+  <title>Collection — John Rey's PokéMerch</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="AddToCart.css" />
+  <link rel="stylesheet" href="PokemonTheme.css" />
   <style>
-  
-    .cart-item-block {
-      border-bottom: 1px solid #1a1a3a;
-      padding: 10px 0;
-      margin-bottom: 4px;
-    }
-    .cart-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 4px;
-    }
-    .cart-item-name {
-      font-family: 'Press Start 2P', sans-serif;
-      font-size: 9px;
-      color: #f0f0f0;
-      line-height: 1.5;
-    }
-    .cart-item-remove {
-      background: none;
-      border: 1px solid #cc0000;
-      color: #ff4444;
-      font-size: 11px;
-      width: 22px; height: 22px;
-      border-radius: 4px;
-      cursor: pointer;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-left: 8px;
-    }
-    .cart-item-remove:hover {
-      background-color: #cc0000;
-      color: white;
-    }
-    .cart-item-meta {
-      font-size: 12px;
-      color: #aaaacc;
-      margin-bottom: 4px;
-    }
-    .cart-item-meta span { color: #f0f0f0; }
-
-    
-    .cart-qty-row {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      margin: 6px 0;
-    }
-    .cart-qty-label {
-      font-size: 11px;
-      color: #aaaacc;
-      margin-right: 8px;
-    }
-    .cart-qty-btn {
-      width: 24px; height: 24px;
-      background-color: #cc0000;
-      border: none; color: white;
-      font-size: 14px; font-weight: bold;
-      cursor: pointer; line-height: 1;
-    }
-    .cart-qty-btn:first-of-type { border-radius: 4px 0 0 4px; }
-    .cart-qty-btn:last-of-type  { border-radius: 0 4px 4px 0; }
-    .cart-qty-btn:hover { background-color: #aa0000; }
-    .cart-qty-input {
-      width: 38px; height: 24px;
-      background-color: #1a1a3a;
-      border-top: 1px solid #cc0000;
-      border-bottom: 1px solid #cc0000;
-      border-left: none; border-right: none;
-      color: #f0f0f0;
-      font-family: 'Press Start 2P', sans-serif;
-      font-size: 9px; text-align: center; outline: none;
-      -moz-appearance: textfield;
-    }
-    .cart-qty-input::-webkit-outer-spin-button,
-    .cart-qty-input::-webkit-inner-spin-button { -webkit-appearance: none; }
-    .cart-item-subtotal {
-      font-size: 12px;
-      color: #aaaacc;
-      margin-top: 2px;
-    }
-    .cart-item-subtotal span {
-      color: #f0f0f0;
-      font-weight: bold;
-    }
-
-    
-    .cart-empty {
+    .col-hero {
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 60%, #0a0a1a 100%);
+      padding: 60px 40px;
       text-align: center;
-      padding: 20px 0;
+      position: relative;
+      overflow: hidden;
     }
-    .cart-empty p {
-      font-family: 'Press Start 2P', sans-serif;
-      font-size: 9px;
-      color: #aaaacc;
-      line-height: 2;
-      margin-bottom: 14px;
+    .col-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(204,0,0,0.12) 0%, transparent 70%);
     }
-    .cart-empty a {
-      display: inline-block;
-      background-color: #cc0000;
-      color: white;
-      font-family: 'Press Start 2P', sans-serif;
-      font-size: 9px;
-      padding: 10px 18px;
-      border-radius: 4px;
-      text-decoration: none;
+    .col-hero-title {
+      font-family: var(--pkm-font-pixel);
+      font-size: 28px; color: var(--pkm-yellow-primary);
+      position: relative; z-index: 1;
+      margin-bottom: 12px; line-height: 1.5;
     }
-    .cart-empty a:hover { background-color: #aa0000; }
-
-   
-    .clear-cart-btn {
-      background: none;
-      border: 1px solid #444466;
-      color: #aaaacc;
-      font-family: 'Press Start 2P', sans-serif;
-      font-size: 8px;
-      padding: 7px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 10px;
-      letter-spacing: 0.5px;
+    .col-hero-sub {
+      font-size: 15px; color: var(--pkm-text-muted);
+      position: relative; z-index: 1;
     }
-    .clear-cart-btn:hover {
-      border-color: #cc0000;
-      color: #ff4444;
+    .col-grid {
+      display: flex; flex-wrap: wrap;
+      gap: 28px; padding: 40px 60px 60px;
+      justify-content: center;
     }
+    .col-card {
+      background-color: var(--pkm-bg-dark);
+      border: 2px solid var(--pkm-red-primary);
+      border-radius: var(--pkm-radius-card);
+      width: 270px; overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .col-card:hover { border-color: var(--pkm-yellow-primary); transform: translateY(-5px); }
+    .col-img {
+      background-color: var(--pkm-bg-mid);
+      height: 200px; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 90px; position: relative;
+    }
+    .col-img img { max-width: 100%; max-height: 180px; object-fit: contain; }
+    .rarity-badge {
+      position: absolute; top: 10px; right: 10px;
+      font-family: var(--pkm-font-pixel); font-size: 7px;
+      padding: 4px 8px; border-radius: 20px; letter-spacing: 0.5px;
+    }
+    .rarity-common    { background:#444466; color:#ccccee; border:1px solid #666688; }
+    .rarity-uncommon  { background:#226622; color:#88ff88; border:1px solid #44aa44; }
+    .rarity-rare      { background:#003388; color:#88ccff; border:1px solid #4488cc; }
+    .rarity-epic      { background:#662266; color:#ffaadd; border:1px solid #aa44aa; }
+    .rarity-legendary { background:#885500; color:#ffcc00; border:1px solid #ffaa00; }
+    .rarity-mythic    { background:#550033; color:#ff88cc; border:1px solid #ff44aa; }
+    .col-body { padding: 18px; }
+    .col-name { font-family:var(--pkm-font-pixel); font-size:12px; color:var(--pkm-yellow-primary); margin-bottom:6px; }
+    .col-number { font-size:11px; color:var(--pkm-text-dim); margin-bottom:8px; }
+    .col-type { font-size:11px; font-weight:bold; padding:3px 9px; border-radius:10px; display:inline-block; margin-bottom:10px; }
+    .col-desc { font-size:12px; color:var(--pkm-text-muted); line-height:1.7; margin-bottom:12px; }
+    .col-stats { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .col-stat { background:#1a1a3a; border:1px solid #2a2a4a; border-radius:6px; padding:4px 10px; font-size:11px; color:var(--pkm-text-muted); }
+    .col-stat span { color:var(--pkm-yellow-primary); font-weight:bold; }
+    .col-price-live { font-family:var(--pkm-font-pixel); font-size:13px; color:var(--pkm-red-accent); margin-bottom:10px; }
+    .col-price-live.changed { color: var(--pkm-yellow-primary); }
+    .col-add-btn {
+      display:block; background-color:var(--pkm-red-primary);
+      border:none; color:white; font-family:var(--pkm-font-pixel);
+      font-size:9px; padding:10px; border-radius:var(--pkm-radius-btn);
+      cursor:pointer; width:100%; text-decoration:none; text-align:center;
+      transition: background-color 0.2s;
+    }
+    .col-add-btn:hover { background-color: var(--pkm-red-hover); }
+    .back-link { font-family:var(--pkm-font-pixel); font-size:10px; color:var(--pkm-yellow-primary); text-decoration:none; }
+    .back-link:hover { color:var(--pkm-red-primary); }
   </style>
 </head>
 <body>
 
   <div class="top-banner">
-    🎮 SECURE CHECKOUT &nbsp;•&nbsp; FREE SHIPPING &nbsp;•&nbsp; COD AVAILABLE &nbsp;•&nbsp; 100% AUTHENTIC 🎮
+    🎮 GOTTA CATCH 'EM ALL! &nbsp;•&nbsp; FREE SHIPPING &nbsp;•&nbsp; LIMITED STOCKS &nbsp;•&nbsp; COD AVAILABLE 🎮
   </div>
 
   <div class="navbar">
-    <div class="logo">JOHN REY'S <span>POKÉMERCH</span></div>
+    <div class="logo">JOHN REY'S <span>POKEMERCH</span></div>
     <a href="index.html" class="back-link">← BACK TO SHOP</a>
+    <div class="nav-right">
+      <div onclick="window.location='checkout.html'" style="cursor:pointer;">
+        🛒 Cart <span class="cart-count" id="nav-cart-count">0</span>
+      </div>
+      <div>👤 Login</div>
+    </div>
   </div>
 
-  <p class="page-title">🛒 CHECKOUT</p>
-  <p class="page-sub">Complete your order below — we'll handle the rest!</p>
-
-  <div class="checkout-wrapper">
-
-    <!-- LEFT: FORM -->
-    <div class="checkout-form">
-      <p class="form-title">📋 DELIVERY INFORMATION</p>
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" placeholder="e.g. Juan" />
-        </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" placeholder="e.g. Dela Cruz" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Contact Number</label>
-        <input type="text" placeholder="e.g. 09XX XXX XXXX" />
-      </div>
-      <div class="form-group">
-        <label>Email Address (optional)</label>
-        <input type="email" placeholder="e.g. juan@email.com" />
-      </div>
-      <div class="form-group">
-        <label>Region / Province</label>
-        <select>
-          <option value="">-- Select Region --</option>
-          <option>Metro Manila</option>
-          <option>Luzon</option>
-          <option>Visayas</option>
-          <option>Mindanao</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>City / Municipality</label>
-        <input type="text" placeholder="e.g. Iloilo City" />
-      </div>
-      <div class="form-group">
-        <label>Barangay</label>
-        <input type="text" placeholder="e.g. Brgy. San Jose" />
-      </div>
-      <div class="form-group">
-        <label>Complete Address</label>
-        <textarea placeholder="House No., Street, Subdivision, Landmark..."></textarea>
-      </div>
-      <hr class="section-divider" />
-      <p class="form-title">💳 PAYMENT METHOD</p>
-      <div class="payment-options">
-        <label class="payment-option">
-          <input type="radio" name="payment" checked />
-          💵 Cash on Delivery (COD)
-        </label>
-        <label class="payment-option">
-          <input type="radio" name="payment" />
-          📱 GCash
-        </label>
-        <label class="payment-option">
-          <input type="radio" name="payment" />
-          📱 Maya (PayMaya)
-        </label>
-        <label class="payment-option">
-          <input type="radio" name="payment" />
-          🏦 Bank Transfer
-        </label>
-      </div>
-      <hr class="section-divider" />
-      <p class="form-title">📝 ORDER NOTES (optional)</p>
-      <div class="form-group">
-        <textarea placeholder="Any special requests or notes for your order..."></textarea>
-      </div>
-      <button class="submit-btn">⚡ PLACE ORDER NOW</button>
-    </div>
-
-    
-    <div class="order-summary">
-      <div class="summary-card">
-        <p class="summary-title">🧾 ORDER SUMMARY</p>
-        <div id="cart-items-list"></div>
-        <div class="summary-item">
-          <span>Shipping Fee</span>
-          <span style="color:#88ff88;">FREE</span>
-        </div>
-        <div class="summary-item">
-          <span>Voucher</span>
-          <span>— None —</span>
-        </div>
-        <div class="summary-total">
-          <span class="label">TOTAL</span>
-          <span class="amount" id="summary-total-amount">₱0.00</span>
-        </div>
-      </div>
-
-      <div class="guarantee-card">
-        <div class="guarantee-item">✅ 100% Authentic Figures</div>
-        <div class="guarantee-item">🚚 Free Shipping Nationwide</div>
-        <div class="guarantee-item">🔄 15-Day Return Policy</div>
-        <div class="guarantee-item">🛡️ 1 Year Warranty</div>
-        <div class="guarantee-item">📱 Contact: 09671756325</div>
-      </div>
-    </div>
-
+  <div class="col-hero">
+    <p class="col-hero-title">📖 POKÉMON COLLECTION</p>
+    <p class="col-hero-sub">All figures available at John Rey's PokéMerch — pick your favorites!</p>
   </div>
+
+  <div class="section-label">⚔️ ALL FIGURES</div>
+  <div class="col-grid" id="col-grid"></div>
 
   <div class="footer">
     © 2025 John Rey's PokéMerch &nbsp;•&nbsp; All Pokémon are trademarks of Nintendo / Game Freak &nbsp;•&nbsp; 📱 09671756325
   </div>
 
   <script>
-   
-    function loadCart() {
-      try { return JSON.parse(localStorage.getItem('pkm_cart') || '[]'); } catch { return []; }
-    }
-    function saveCart(cart) {
-      localStorage.setItem('pkm_cart', JSON.stringify(cart));
+    const POKEMONS = [
+      { name:'Charizard', img:'charizard.png', type:'fire',     typeLabel:'🔥 Fire / Flying', anim:'anim-float',
+        number:'#006 — Flame Pokémon', rarity:'rarity-rare', rarityLabel:'★★★ RARE',
+        desc:'A fearsome Fire-type dragon with blazing wings. This premium figure captures Charizard mid-roar, surrounded by real flame effects on a volcanic base.',
+        stats:'Height: <span>1.7m</span> | Weight: <span>90.5kg</span> | Gen: <span>I</span>', basePrice:499 },
+      { name:'Pikachu', img:'pikachu.png', type:'electric', typeLabel:'⚡ Electric', anim:'anim-shake',
+        number:'#025 — Mouse Pokémon', rarity:'rarity-uncommon', rarityLabel:'★★ UNCOMMON',
+        desc:'The world\'s most recognized Pokémon in a battle-ready stance, with lightning bolt effects crackling on both sides.',
+        stats:'Height: <span>0.4m</span> | Weight: <span>6kg</span> | Gen: <span>I</span>', basePrice:449 },
+      { name:'Bulbasaur', img:'bulbasaur.png', type:'grass', typeLabel:'🌿 Grass / Poison', anim:'anim-bob',
+        number:'#001 — Seed Pokémon', rarity:'rarity-common', rarityLabel:'★ COMMON',
+        desc:'The lovable Seed Pokémon with a highly detailed vine bulb on its back. Comes with a lush grass display base.',
+        stats:'Height: <span>0.7m</span> | Weight: <span>6.9kg</span> | Gen: <span>I</span>', basePrice:399 },
+      { name:'Squirtle', img:'squirtle.png', type:'water', typeLabel:'💧 Water', anim:'anim-bounce',
+        number:'#007 — Tiny Turtle Pokémon', rarity:'rarity-common', rarityLabel:'★ COMMON',
+        desc:'The cheerful Tiny Turtle Pokémon leaping into action, set on a translucent water wave base.',
+        stats:'Height: <span>0.5m</span> | Weight: <span>9kg</span> | Gen: <span>I</span>', basePrice:399 },
+      { name:'Meowth', img:'meowth.png', type:'normal', typeLabel:'🪙 Normal', anim:'anim-sway',
+        number:'#052 — Scratch Cat Pokémon', rarity:'rarity-uncommon', rarityLabel:'★★ UNCOMMON',
+        desc:"Team Rocket's lovable schemer sitting atop a treasure chest overflowing with coins and gems.",
+        stats:'Height: <span>0.4m</span> | Weight: <span>4.2kg</span> | Gen: <span>I</span>', basePrice:379 },
+      { name:'Mew', img:'mew.png', type:'psychic', typeLabel:'🔮 Psychic', anim:'anim-spin-float',
+        number:'#151 — New Species Pokémon', rarity:'rarity-mythic', rarityLabel:'✦ MYTHIC',
+        desc:'The rarest figure in the entire PokéMerch lineup. Mew floats on a glowing psychic energy base with soft translucent fins.',
+        stats:'Height: <span>0.4m</span> | Weight: <span>4kg</span> | Gen: <span>I</span>', basePrice:599 },
+      { name:'Dragonite', img:'dragonite.png', type:'dragon', typeLabel:'🐉 Dragon / Flying', anim:'anim-drift',
+        number:'#149 — Dragon Pokémon', rarity:'rarity-epic', rarityLabel:'★★★★ EPIC',
+        desc:'The gentle Dragon Pokémon standing tall. Every scale and wing vein is hand-painted with extreme detail.',
+        stats:'Height: <span>2.2m</span> | Weight: <span>210kg</span> | Gen: <span>I</span>', basePrice:549 },
+      { name:'Rayquaza', img:'rayquaza.png', type:'dragon', typeLabel:'🌪️ Dragon / Flying', anim:'anim-wave',
+        number:'#384 — Sky High Pokémon', rarity:'rarity-legendary', rarityLabel:'⚡ LEGENDARY',
+        desc:'The Sky High Pokémon in an epic coiling action pose, mounted on a dramatic display stand. The ultimate collector\'s piece.',
+        stats:'Height: <span>7m</span> | Weight: <span>206.5kg</span> | Gen: <span>III</span>', basePrice:699 },
+    ];
+
+    const SIZE_OFFSETS = {
+      'Small (5cm)':    0,
+      'Medium (10cm)': 50,
+      'Large (15cm)': 100,
+      'XL (20cm)':    150,
+    };
+
+    function getPrice(base, size) {
+      return base + (SIZE_OFFSETS[size] ?? 0);
     }
 
-  
-    function renderSummary() {
-      const cart      = loadCart();
-      const container = document.getElementById('cart-items-list');
-      const totalEl   = document.getElementById('summary-total-amount');
+    function buildCollection() {
+      const grid = document.getElementById('col-grid');
+      POKEMONS.forEach((p, idx) => {
+        const sizeOptions = Object.entries(SIZE_OFFSETS).map(([label, offset]) =>
+          `<option value="${label}">${label} — ₱${(p.basePrice + offset).toLocaleString()}</option>`
+        ).join('');
 
-      if (!cart.length) {
-        container.innerHTML = `
-          <div class="cart-empty">
-            <p>Your cart is empty.<br/>Go back and add some figures!</p>
-            <a href="index.html">← BACK TO SHOP</a>
+        const card = document.createElement('div');
+        card.className = 'col-card';
+        card.dataset.idx = idx;
+        card.innerHTML = `
+          <div class="col-img ${p.anim}">
+            <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'"/>
+            <span class="rarity-badge ${p.rarity}">${p.rarityLabel}</span>
+          </div>
+          <div class="col-body">
+            <p class="col-number">${p.number}</p>
+            <p class="col-name">${p.name.toUpperCase()}</p>
+            <span class="col-type ${p.type}">${p.typeLabel}</span>
+            <p class="col-desc">${p.desc}</p>
+            <div class="col-stats">
+              <div class="col-stat">${p.stats}</div>
+            </div>
+            <p class="col-price-live" id="col-price-${idx}">
+              ₱${p.basePrice.toLocaleString()} <span style="font-size:7px;color:#aaaacc;">— select size</span>
+            </p>
+            <div class="pkm-size-wrapper">
+              <span class="pkm-size-label">SIZE</span>
+              <select class="pkm-size-select" id="col-size-${idx}" onchange="onColSizeChange(${idx})">
+                <option value="">-- Select Size --</option>
+                ${sizeOptions}
+              </select>
+            </div>
+            <div class="pkm-qty-wrapper" style="margin-bottom:10px;">
+              <span class="pkm-qty-label">QTY</span>
+              <button class="pkm-qty-btn" onclick="colQty(this,-1)">−</button>
+              <input class="pkm-qty-input" id="col-qty-${idx}" type="number" value="1" min="1" max="99"/>
+              <button class="pkm-qty-btn" onclick="colQty(this,1)">+</button>
+            </div>
+            <button class="col-add-btn" id="col-btn-${idx}" onclick="colAddToCart(${idx})">ADD TO CART</button>
           </div>`;
-        totalEl.textContent = '₱0.00';
+        grid.appendChild(card);
+      });
+    }
+
+    function onColSizeChange(idx) {
+      const p       = POKEMONS[idx];
+      const sizeVal = document.getElementById(`col-size-${idx}`).value;
+      const priceEl = document.getElementById(`col-price-${idx}`);
+      if (sizeVal) {
+        priceEl.innerHTML = `₱${getPrice(p.basePrice, sizeVal).toLocaleString()}`;
+        priceEl.classList.add('changed');
+        setTimeout(() => priceEl.classList.remove('changed'), 600);
+      } else {
+        priceEl.innerHTML = `₱${p.basePrice.toLocaleString()} <span style="font-size:7px;color:#aaaacc;">— select size</span>`;
+      }
+    }
+
+    function colQty(btn, delta) {
+      const input = btn.parentElement.querySelector('.pkm-qty-input');
+      let val = parseInt(input.value) || 1;
+      val = Math.max(1, Math.min(99, val + delta));
+      input.value = val;
+    }
+
+    function loadCart()      { try { return JSON.parse(localStorage.getItem('pkm_cart') || '[]'); } catch { return []; } }
+    function saveCart(cart)  { localStorage.setItem('pkm_cart', JSON.stringify(cart)); }
+    function updateCartBadge() {
+      const total = loadCart().reduce((s, i) => s + i.qty, 0);
+      document.getElementById('nav-cart-count').textContent = total;
+    }
+
+    function colAddToCart(idx) {
+      const p      = POKEMONS[idx];
+      const sizeEl = document.getElementById(`col-size-${idx}`);
+      const qtyEl  = document.getElementById(`col-qty-${idx}`);
+      const btn    = document.getElementById(`col-btn-${idx}`);
+      const size   = sizeEl.value;
+      const qty    = parseInt(qtyEl.value) || 1;
+
+      if (!size) {
+        sizeEl.style.borderColor = '#ff4444';
+        sizeEl.focus();
+        setTimeout(() => sizeEl.style.borderColor = '', 1200);
         return;
       }
 
-      let grandTotal = 0;
-      container.innerHTML = '';
-
-      cart.forEach((item, i) => {
-        const subtotal = item.price * item.qty;
-        grandTotal += subtotal;
-
-        const block = document.createElement('div');
-        block.className = 'cart-item-block';
-        block.innerHTML = `
-          <div class="cart-item-header">
-            <span class="cart-item-name">${item.name}</span>
-            <button class="cart-item-remove" title="Remove" onclick="removeItem(${i})">✕</button>
-          </div>
-          <div class="cart-item-meta">Size: <span>${item.size}</span></div>
-          <div class="cart-item-meta">Unit Price: <span style="color:#ff4444;">₱${item.price.toLocaleString()}</span></div>
-          <div class="cart-qty-row">
-            <span class="cart-qty-label">QTY</span>
-            <button class="cart-qty-btn" onclick="changeQty(${i}, -1)">−</button>
-            <input class="cart-qty-input" type="number" value="${item.qty}" min="1" max="99"
-              onchange="setQty(${i}, this.value)" />
-            <button class="cart-qty-btn" onclick="changeQty(${i}, 1)">+</button>
-          </div>
-          <div class="cart-item-subtotal">Subtotal: <span>₱${subtotal.toLocaleString()}</span></div>`;
-        container.appendChild(block);
-      });
-
-      
-      const clearBtn = document.createElement('button');
-      clearBtn.className = 'clear-cart-btn';
-      clearBtn.textContent = '🗑️ CLEAR ENTIRE CART';
-      clearBtn.onclick = clearCart;
-      container.appendChild(clearBtn);
-
-      totalEl.textContent = '₱' + grandTotal.toLocaleString();
-    }
-
- 
-    function removeItem(idx) {
+      const price = getPrice(p.basePrice, size);
       let cart = loadCart();
-      cart.splice(idx, 1);
+      const existing = cart.find(i => i.name === p.name && i.size === size);
+      if (existing) { existing.qty += qty; existing.price = price; }
+      else          { cart.push({ name: p.name, price, qty, size }); }
       saveCart(cart);
-      renderSummary();
+      updateCartBadge();
+
+      btn.textContent = '✅ ADDED!';
+      btn.style.backgroundColor = '#226622';
+      setTimeout(() => {
+        btn.textContent = 'ADD TO CART';
+        btn.style.backgroundColor = '';
+      }, 1500);
     }
 
-    
-    function changeQty(idx, delta) {
-      let cart = loadCart();
-      cart[idx].qty = Math.max(1, Math.min(99, cart[idx].qty + delta));
-      saveCart(cart);
-      renderSummary();
-    }
-
-   
-    function setQty(idx, val) {
-      let cart = loadCart();
-      const n = parseInt(val);
-      if (isNaN(n) || n < 1) { cart[idx].qty = 1; }
-      else if (n > 99)       { cart[idx].qty = 99; }
-      else                   { cart[idx].qty = n; }
-      saveCart(cart);
-      renderSummary();
-    }
-
-    
-    function clearCart() {
-      if (confirm('Clear all items from your cart?')) {
-        saveCart([]);
-        renderSummary();
-      }
-    }
-
-    
-    (function checkURLParams() {
-      const params = new URLSearchParams(window.location.search);
-      const name  = params.get('name');
-      const price = parseFloat(params.get('price'));
-      const qty   = parseInt(params.get('qty')) || 1;
-      const size  = params.get('size') || '—';
-      if (name && !isNaN(price)) {
-        let cart = loadCart();
-        const existing = cart.find(i => i.name === name && i.size === size);
-        if (existing) { existing.qty += qty; }
-        else          { cart.push({ name, price, qty, size }); }
-        saveCart(cart);
-        window.history.replaceState({}, '', 'checkout.html');
-      }
-    })();
-
-    renderSummary();
+    buildCollection();
+    updateCartBadge();
   </script>
 
 </body>
