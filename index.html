@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>John Rey's PokéMerch — Classic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="PokemonTheme.css" />
+  <link rel="stylesheet" href="AddToCart.css" />
+</head>
+<body>
+
+  <div class="top-banner">
+    🎮 GOTTA BUY 'EM ALL! &nbsp;•&nbsp; FREE SHIPPING &nbsp;•&nbsp; LIMITED STOCKS &nbsp;•&nbsp; COD AVAILABLE 🎮
+  </div>
+
+  <div class="navbar">
+    <div class="logo">JOHN REY'S <span>POKEMERCH</span></div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search Pokémon merch..." />
+      <button>SEARCH</button>
+    </div>
+    <div class="nav-right">
+      <div onclick="window.location='checkout.html'" style="cursor:pointer;">
+        🛒 Cart <span class="cart-count" id="nav-cart-count">0</span>
+      </div>
+      <div>👤 Login</div>
+    </div>
+  </div>
+
+  <div class="secondBanner">
+    <video autoplay muted loop>
+      <source src="pokemontheme1.mp4" type="video/mp4">
+    </video>
+    <div class="secondBanner-overlay"></div>
+    <div class="secondBanner-text">
+      <p class="secondBanner-badge">⭐ OFFICIAL POKEMON FIGURES ⭐</p>
+      <h1>COLLECT THEM <span>ALL!</span></h1>
+      <p class="secondBanner-sub">Premium mini figures — straight from the Pokémon world to your shelf</p>
+      <div class="secondBanner-btns">
+        <button class="btn-buy" onclick="window.location='checkout.html'">SHOP NOW</button>
+        <button class="btn-cart" onclick="window.location='collection.html'">VIEW COLLECTION</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-section">
+
+    <video autoplay muted loop class="bg-video">
+      <source src="pokemontheme3.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <div class="section-label"><strong>⚔️ FEATURED FIGURES</strong></div>
+
+    <div class="pokemon-grid">
+
+     
+      <div class="poke-card">
+        <div class="poke-img-wrap anim-float">
+          <img src="charizard.png" alt="Charizard" />
+        </div>
+        <div class="poke-info">
+          <p class="poke-name">CHARIZARD</p>
+          <p class="poke-type fire">🔥 Fire / Flying</p>
+          <p class="poke-desc">A fearsome Fire-type dragon with blazing wings. Captured mid-roar surrounded by real flame effects.</p>
+          <p class="poke-price">₱499</p>
+          <div class="pkm-size-wrapper">
+            <span class="pkm-size-label">SIZE</span>
+            <select class="pkm-size-select">
+              <option value="">-- Select Size --</option>
+              <option value="Small (5cm)">Small (5 cm)</option>
+              <option value="Medium (10cm)">Medium (10 cm)</option>
+              <option value="Large (15cm)">Large (15 cm)</option>
+              <option value="XL (20cm)">XL (20 cm)</option>
+            </select>
+          </div>
+          <div class="pkm-qty-wrapper">
+            <span class="pkm-qty-label">QTY</span>
+            <button class="pkm-qty-btn" onclick="pkmQty(this,-1)">−</button>
+            <input class="pkm-qty-input" type="number" value="1" min="1" max="99" />
+            <button class="pkm-qty-btn" onclick="pkmQty(this,1)">+</button>
+          </div>
+          <button class="add-btn" onclick="addToCart(this,'Charizard',499)">ADD TO CART</button>
+        </div>
+      </div>
+
+      
+      <div class="poke-card">
+        <div class="poke-img-wrap anim-shake">
+          <img src="pikachu.png" alt="Pikachu" />
+        </div>
+        <div class="poke-info">
+          <p class="poke-name">PIKACHU</p>
+          <p class="poke-type electric">⚡ Electric</p>
+          <p class="poke-desc">The iconic Electric Mouse in battle stance with lightning bolt effects on both sides.</p>
+          <p class="poke-price">₱449</p>
+          <div class="pkm-size-wrapper">
+            <span class="pkm-size-label">SIZE</span>
+            <select class="pkm-size-select">
+              <option value="">-- Select Size --</option>
+              <option value="Small (5cm)">Small (5 cm)</option>
+              <option value="Medium (10cm)">Medium (10 cm)</option>
+              <option value="Large (15cm)">Large (15 cm)</option>
+              <option value="XL (20cm)">XL (20 cm)</option>
+            </select>
+          </div>
+          <div class="pkm-qty-wrapper">
+            <span class="pkm-qty-label">QTY</span>
+            <button class="pkm-qty-btn" onclick="pkmQty(this,-1)">−</button>
+            <input class="pkm-qty-input" type="number" value="1" min="1" max="99" />
+            <button class="pkm-qty-btn" onclick="pkmQty(this,1)">+</button>
+          </div>
+          <button class="add-btn" onclick="addToCart(this,'Pikachu',449)">ADD TO CART</button>
+        </div>
+      </div>
+
+      
+      <div class="poke-card">
+        <div class="poke-img-wrap anim-bob">
+          <img src="bulbasaur.png" alt="Bulbasaur" />
+        </div>
+        <div class="poke-info">
+          <p class="poke-name">BULBASAUR</p>
+          <p class="poke-type grass">🌿 Grass / Poison</p>
+          <p class="poke-desc">The lovable Seed Pokémon with a detailed vine bulb. Comes with a grass base display.</p>
+          <p class="poke-price">₱399</p>
+          <div class="pkm-size-wrapper">
+            <span class="pkm-size-label">SIZE</span>
+            <select class="pkm-size-select">
+              <option value="">-- Select Size --</option>
+              <option value="Small (5cm)">Small (5 cm)</option>
+              <option value="Medium (10cm)">Medium (10 cm)</option>
+              <option value="Large (15cm)">Large (15 cm)</option>
+              <option value="XL (20cm)">XL (20 cm)</option>
+            </select>
+          </div>
+          <div class="pkm-qty-wrapper">
+            <span class="pkm-qty-label">QTY</span>
+            <button class="pkm-qty-btn" onclick="pkmQty(this,-1)">−</button>
+            <input class="pkm-qty-input" type="number" value="1" min="1" max="99" />
+            <button class="pkm-qty-btn" onclick="pkmQty(this,1)">+</button>
+          </div>
+          <button class="add-btn" onclick="addToCart(this,'Bulbasaur',399)">ADD TO CART</button>
+        </div>
+      </div>
+
+      
+      <div class="poke-card">
+        <div class="poke-img-wrap anim-bounce">
+          <img src="squirtle.png" alt="Squirtle" />
+        </div>
+        <div class="poke-info">
+          <p class="poke-name">SQUIRTLE</p>
+          <p class="poke-type water">💧 Water</p>
+          <p class="poke-desc">The cheerful Tiny Turtle leaping into action with a translucent water wave base.</p>
+          <p class="poke-price">₱399</p>
+          <div class="pkm-size-wrapper">
+            <span class="pkm-size-label">SIZE</span>
+            <select class="pkm-size-select">
+              <option value="">-- Select Size --</option>
+              <option value="Small (5cm)">Small (5 cm)</option>
+              <option value="Medium (10cm)">Medium (10 cm)</option>
+              <option value="Large (15cm)">Large (15 cm)</option>
+              <option value="XL (20cm)">XL (20 cm)</option>
+            </select>
+          </div>
+          <div class="pkm-qty-wrapper">
+            <span class="pkm-qty-label">QTY</span>
+            <button class="pkm-qty-btn" onclick="pkmQty(this,-1)">−</button>
+            <input class="pkm-qty-input" type="number" value="1" min="1" max="99" />
+            <button class="pkm-qty-btn" onclick="pkmQty(this,1)">+</button>
+          </div>
+          <button class="add-btn" onclick="addToCart(this,'Squirtle',399)">ADD TO CART</button>
+        </div>
+      </div>
+
+      
+      <div class="poke-card">
+        <div class="poke-img-wrap anim-sway">
+          <img src="meowth.png" alt="Meowth" />
+        </div>
+        <div class="poke-info">
+          <p class="poke-name">MEOWTH</p>
+          <p class="poke-type normal">🪙 Normal</p>
+          <p class="poke-desc">Team Rocket's lovable schemer sitting on a treasure chest full of coins and gems.</p>
+          <p class="poke-price">₱379</p>
+          <div class="pkm-size-wrapper">
+            <span class="pkm-size-label">SIZE</span>
+            <select class="pkm-size-select">
+              <option value="">-- Select Size --</option>
+              <option value="Small (5cm)">Small (5 cm)</option>
+              <option value="Medium (10cm)">Medium (10 cm)</option>
+              <option value="Large (15cm)">Large (15 cm)</option>
+              <option value="XL (20cm)">XL (20 cm)</option>
+            </select>
+          </div>
+          <div class="pkm-qty-wrapper">
+            <span class="pkm-qty-label">QTY</span>
+            <button class="pkm-qty-btn" onclick="pkmQty(this,-1)">−</button>
+            <input class="pkm-qty-input" type="number" value="1" min="1" max="99" />
+            <button class="pkm-qty-btn" onclick="pkmQty(this,1)">+</button>
+          </div>
+          <button class="add-btn" onclick="addToCart(this,'Meowth',379)">ADD TO CART</button>
+        </div>
+      </div>
+
+      
+      <div class="poke-card">
+        <div class="poke-img-wrap anim-spin-float">
+          <img src="mew.png" alt="Mew" />
+        </div>
+        <div class="poke-info">
+          <p class="poke-name">MEW</p>
+          <p class="poke-type psychic">🔮 Psychic</p>
+          <p class="poke-desc">The mythical New Species Pokémon floating on a psychic energy base. Rarest figure!</p>
+          <p class="poke-price">₱599</p>
+          <div class="pkm-size-wrapper">
+            <span class="pkm-size-label">SIZE</span>
+            <select class="pkm-size-select">
+              <option value="">-- Select Size --</option>
+              <option value="Small (5cm)">Small (5 cm)</option>
+              <option value="Medium (10cm)">Medium (10 cm)</option>
+              <option value="Large (15cm)">Large (15 cm)</option>
+              <option value="XL (20cm)">XL (20 cm)</option>
+            </select>
+          </div>
+          <div class="pkm-qty-wrapper">
+            <span class="pkm-qty-label">QTY</span>
+            <button class="pkm-qty-btn" onclick="pkmQty(this,-1)">−</button>
+            <input class="pkm-qty-input" type="number" value="1" min="1" max="99" />
+            <button class="pkm-qty-btn" onclick="pkmQty(this,1)">+</button>
+          </div>
+          <button class="add-btn" onclick="addToCart(this,'Mew',599)">ADD TO CART</button>
+        </div>
+      </div>
+
+      
+      <div class="poke-card">
+        <div class="poke-img-wrap anim-drift">
+          <img src="dragonite.png" alt="Dragonite" />
+        </div>
+        <div class="poke-info">
+          <p class="poke-name">DRAGONITE</p>
+          <p class="poke-type dragon">🐉 Dragon / Flying</p>
+          <p class="poke-desc">The gentle Dragon Pokémon standing tall. Highly detailed scales and wings.</p>
+          <p class="poke-price">₱549</p>
+          <div class="pkm-size-wrapper">
+            <span class="pkm-size-label">SIZE</span>
+            <select class="pkm-size-select">
+              <option value="">-- Select Size --</option>
+              <option value="Small (5cm)">Small (5 cm)</option>
+              <option value="Medium (10cm)">Medium (10 cm)</option>
+              <option value="Large (15cm)">Large (15 cm)</option>
+              <option value="XL (20cm)">XL (20 cm)</option>
+            </select>
+          </div>
+          <div class="pkm-qty-wrapper">
+            <span class="pkm-qty-label">QTY</span>
+            <button class="pkm-qty-btn" onclick="pkmQty(this,-1)">−</button>
+            <input class="pkm-qty-input" type="number" value="1" min="1" max="99" />
+            <button class="pkm-qty-btn" onclick="pkmQty(this,1)">+</button>
+          </div>
+          <button class="add-btn" onclick="addToCart(this,'Dragonite',549)">ADD TO CART</button>
+        </div>
+      </div>
+
+      
+      <div class="poke-card">
+        <div class="poke-img-wrap anim-wave">
+          <img src="rayquaza.png" alt="Rayquaza" />
+        </div>
+        <div class="poke-info">
+          <p class="poke-name">RAYQUAZA</p>
+          <p class="poke-type dragon">🌪️ Dragon / Flying</p>
+          <p class="poke-desc">The Sky High Pokémon in an epic action pose. Fully articulated on a display stand.</p>
+          <p class="poke-price">₱699</p>
+          <div class="pkm-size-wrapper">
+            <span class="pkm-size-label">SIZE</span>
+            <select class="pkm-size-select">
+              <option value="">-- Select Size --</option>
+              <option value="Small (5cm)">Small (5 cm)</option>
+              <option value="Medium (10cm)">Medium (10 cm)</option>
+              <option value="Large (15cm)">Large (15 cm)</option>
+              <option value="XL (20cm)">XL (20 cm)</option>
+            </select>
+          </div>
+          <div class="pkm-qty-wrapper">
+            <span class="pkm-qty-label">QTY</span>
+            <button class="pkm-qty-btn" onclick="pkmQty(this,-1)">−</button>
+            <input class="pkm-qty-input" type="number" value="1" min="1" max="99" />
+            <button class="pkm-qty-btn" onclick="pkmQty(this,1)">+</button>
+          </div>
+          <button class="add-btn" onclick="addToCart(this,'Rayquaza',699)">ADD TO CART</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-label">❓ FAQ & CONTACT</div>
+    <div class="faq-contact-wrapper">
+      <div class="faq-section">
+        <div class="faq-item">
+          <p class="faq-q">Are these official licensed Pokémon figures?</p>
+          <p class="faq-a">Yes! All figures at John Rey's PokéMerch are officially licensed Pokémon merchandise with authentic packaging and markings.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">How long does shipping take?</p>
+          <p class="faq-a">We offer free shipping nationwide. Delivery takes 3–7 business days. You will receive a tracking number once your order is confirmed.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Do you accept Cash on Delivery (COD)?</p>
+          <p class="faq-a">Yes! We accept COD for all orders. You can also pay via GCash, Maya, bank transfer, or installment through our payment partners.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">What if my figure arrives damaged?</p>
+          <p class="faq-a">Contact us within 3 days of receiving your item and we will arrange a free replacement or full refund — no questions asked.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Can I buy multiple figures in one order?</p>
+          <p class="faq-a">Absolutely! Add as many figures as you want. Bulk orders of 5 or more figures get a special discount — message us for details!</p>
+        </div>
+      </div>
+      <div class="contact-section">
+        <div class="contact-card">
+          <p class="contact-title">JOHN REY'S POKEMERCH</p>
+          <p class="contact-line">📱 Contact Number:<span>09671756325</span></p>
+          <p class="contact-line">📦 Free Shipping Nationwide</p>
+          <p class="contact-line">🕐 Mon – Sat, 8AM – 8PM</p>
+          <p class="contact-line">💬 Message us for orders and inquiries!</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    © 2025 John Rey's PokéMerch &nbsp;•&nbsp; All Pokémon are trademarks of Nintendo / Game Freak &nbsp;•&nbsp; 📱 09671756325
+  </div>
+
+  <script>
+    function pkmQty(btn, delta) {
+      const input = btn.parentElement.querySelector('.pkm-qty-input');
+      let val = parseInt(input.value) || 1;
+      val = Math.max(1, Math.min(99, val + delta));
+      input.value = val;
+    }
+
+    function loadCart() {
+      try { return JSON.parse(localStorage.getItem('pkm_cart') || '[]'); } catch { return []; }
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('pkm_cart', JSON.stringify(cart));
+    }
+
+    function updateCartBadge() {
+      const cart  = loadCart();
+      const total = cart.reduce((sum, i) => sum + i.qty, 0);
+      document.getElementById('nav-cart-count').textContent = total;
+    }
+
+    function addToCart(btn, name, price) {
+      const card   = btn.closest('.poke-card');
+      const sizeEl = card.querySelector('.pkm-size-select');
+      const qtyEl  = card.querySelector('.pkm-qty-input');
+      const size   = sizeEl.value || '—';
+      const qty    = parseInt(qtyEl.value) || 1;
+
+      let cart = loadCart();
+      const existing = cart.find(i => i.name === name && i.size === size);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({ name, price, qty, size });
+      }
+      saveCart(cart);
+      updateCartBadge();
+
+      btn.textContent = '✅ ADDED!';
+      btn.style.backgroundColor = '#226622';
+      setTimeout(() => {
+        btn.textContent = 'ADD TO CART';
+        btn.style.backgroundColor = '';
+      }, 1500);
+    }
+
+    updateCartBadge();
+  </script>
+
+</body>
+</html>

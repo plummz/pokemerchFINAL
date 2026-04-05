@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Collection — John Rey's PokéMerch</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="PokemonTheme.css" />
+<style>
+
+.col-hero {
+background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 60%, #0a0a1a 100%);
+padding: 60px 40px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+.col-hero::before {
+content: '';
+position: absolute; inset: 0;
+background: radial-gradient(ellipse at center, rgba(204,0,0,0.12) 0%, transparent 70%);
+}
+.col-hero-title {
+font-family: var(--pkm-font-pixel);
+font-size: 28px;
+color: var(--pkm-yellow-primary);
+position: relative; z-index: 1;
+margin-bottom: 12px;
+line-height: 1.5;
+}
+.col-hero-sub {
+font-size: 15px;
+color: var(--pkm-text-muted);
+position: relative; z-index: 1;
+}
+.col-grid {
+display: flex;
+flex-wrap: wrap;
+gap: 28px;
+padding: 40px 60px 60px;
+justify-content: center;
+}
+.col-card {
+background-color: var(--pkm-bg-dark);
+border: 2px solid var(--pkm-red-primary);
+border-radius: var(--pkm-radius-card);
+width: 270px;
+overflow: hidden;
+transition: border-color 0.2s, transform 0.2s;
+}
+.col-card:hover {
+border-color: var(--pkm-yellow-primary);
+transform: translateY(-5px);
+}
+.col-img {
+background-color: var(--pkm-bg-mid);
+height: 200px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 90px;
+position: relative;
+}
+.col-img img {
+max-width: 100%;
+max-height: 180px;
+object-fit: contain;
+}
+.rarity-badge {
+position: absolute;
+top: 10px; right: 10px;
+font-family: var(--pkm-font-pixel);
+font-size: 7px;
+padding: 4px 8px;
+border-radius: 20px;
+letter-spacing: 0.5px;
+}
+.rarity-common { background-color: #444466; color: #ccccee; border: 1px solid #666688; }
+.rarity-uncommon { background-color: #226622; color: #88ff88; border: 1px solid #44aa44; }
+.rarity-rare { background-color: #003388; color: #88ccff; border: 1px solid #4488cc; }
+.rarity-epic { background-color: #662266; color: #ffaadd; border: 1px solid #aa44aa; }
+.rarity-legendary { background-color: #885500; color: #ffcc00; border: 1px solid #ffaa00; }
+.rarity-mythic { background-color: #550033; color: #ff88cc; border: 1px solid #ff44aa; }
+.col-body {
+padding: 18px;
+}
+.col-name {
+font-family: var(--pkm-font-pixel);
+font-size: 12px;
+color: var(--pkm-yellow-primary);
+margin-bottom: 6px;
+}
+.col-number {
+font-size: 11px;
+color: var(--pkm-text-dim);
+margin-bottom: 8px;
+}
+.col-type {
+font-size: 11px; font-weight: bold;
+padding: 3px 9px; border-radius: 10px;
+display: inline-block; margin-bottom: 10px;
+}
+.col-desc {
+font-size: 12px;
+color: var(--pkm-text-muted);
+line-height: 1.7;
+margin-bottom: 12px;
+}
+.col-stats {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+margin-bottom: 14px;
+}
+.col-stat {
+background-color: #1a1a3a;
+border: 1px solid #2a2a4a;
+border-radius: 6px;
+padding: 4px 10px;
+font-size: 11px;
+color: var(--pkm-text-muted);
+}
+.col-stat span {
+color: var(--pkm-yellow-primary);
+font-weight: bold;
+}
+.col-price {
+font-family: var(--pkm-font-pixel);
+font-size: 14px;
+color: var(--pkm-red-accent);
+margin-bottom: 14px;
+}
+.col-add-btn {
+display: block;
+background-color: var(--pkm-red-primary);
+border: none; color: white;
+font-family: var(--pkm-font-pixel);
+font-size: 9px; padding: 10px;
+border-radius: var(--pkm-radius-btn);
+cursor: pointer; width: 100%;
+text-decoration: none; text-align: center;
+transition: background-color 0.2s;
+}
+.col-add-btn:hover { background-color: var(--pkm-red-hover); }
+.back-link {
+font-family: var(--pkm-font-pixel);
+font-size: 10px;
+color: var(--pkm-yellow-primary);
+text-decoration: none;
+}
+.back-link:hover { color: var(--pkm-red-primary); }
+</style>
+</head>
+<body>
+<div class="top-banner">
+🎮 GOTTA CATCH 'EM ALL! &nbsp;•&nbsp; FREE SHIPPING &nbsp;•&nbsp; LIMITED STOCKS &nbsp;•&nbsp; COD AVAILABLE 🎮
+</div>
+<div class="navbar">
+<div class="logo">JOHN REY'S <span>POKEMERCH</span></div>
+<a href="index.html" class="back-link">← BACK TO SHOP</a>
+<div class="nav-right">
+<div onclick="window.location='checkout.html'" style="cursor:pointer;">
+🛒 Cart <span class="cart-count" id="nav-cart-count">0</span>
+</div>
+<div>👤 Login</div>
+</div>
+</div>
+<div class="col-hero">
+<p class="col-hero-title">📖 POKÉMON COLLECTION</p>
+<p class="col-hero-sub">All figures available at John Rey's PokéMerch — pick your favorites!</p>
+</div>
+<div class="section-label">⚔️ ALL FIGURES</div>
+<div class="col-grid">
+
+<div class="col-card">
+<div class="col-img anim-float">
+<img src="charizard.png" alt="Charizard" onerror="this.style.display='none';this.parentNode.innerHTML+='🔥'"/>
+<span class="rarity-badge rarity-rare">★★★ RARE</span>
+</div>
+<div class="col-body">
+<p class="col-number">#006 — Flame Pokémon</p>
+<p class="col-name">CHARIZARD</p>
+<span class="col-type fire">🔥 Fire / Flying</span>
+<p class="col-desc">A fearsome Fire-type dragon with blazing wings. This premium figure captures Charizard mid-roar, surrounded by real flame effects on a volcanic base. One of the most iconic Pokémon ever made.</p>
+<div class="col-stats">
+<div class="col-stat">Height: <span>1.7m</span></div>
+<div class="col-stat">Weight: <span>90.5kg</span></div>
+<div class="col-stat">Gen: <span>I</span></div>
+</div>
+<p class="col-price">₱499</p>
+<a href="#" class="col-add-btn" onclick="colAddToCart('Charizard',499,this)">ADD TO CART</a>
+</div>
+</div>
+
+<div class="col-card">
+<div class="col-img anim-shake">
+<img src="pikachu.png" alt="Pikachu" onerror="this.style.display='none';this.parentNode.innerHTML+='⚡'"/>
+<span class="rarity-badge rarity-uncommon">★★ UNCOMMON</span>
+</div>
+<div class="col-body">
+<p class="col-number">#025 — Mouse Pokémon</p>
+<p class="col-name">PIKACHU</p>
+<span class="col-type electric">⚡ Electric</span>
+<p class="col-desc">The world's most recognized Pokémon in a battle-ready stance, with lightning bolt effects crackling on both sides. Every Trainer's first companion — now on your shelf forever.</p>
+<div class="col-stats">
+<div class="col-stat">Height: <span>0.4m</span></div>
+<div class="col-stat">Weight: <span>6kg</span></div>
+<div class="col-stat">Gen: <span>I</span></div>
+</div>
+<p class="col-price">₱449</p>
+<a href="#" class="col-add-btn" onclick="colAddToCart('Pikachu',449,this)">ADD TO CART</a>
+</div>
+</div>
+
+<div class="col-card">
+<div class="col-img anim-bob">
+<img src="bulbasaur.png" alt="Bulbasaur" onerror="this.style.display='none';this.parentNode.innerHTML+='🌿'"/>
+<span class="rarity-badge rarity-common">★ COMMON</span>
+</div>
+<div class="col-body">
+<p class="col-number">#001 — Seed Pokémon</p>
+<p class="col-name">BULBASAUR</p>
+<span class="col-type grass">🌿 Grass / Poison</span>
+<p class="col-desc">The lovable Seed Pokémon with a highly detailed vine bulb on its back. Comes with a lush grass display base, perfect for any nature-loving Trainer's collection.</p>
+<div class="col-stats">
+<div class="col-stat">Height: <span>0.7m</span></div>
+<div class="col-stat">Weight: <span>6.9kg</span></div>
+<div class="col-stat">Gen: <span>I</span></div>
+</div>
+<p class="col-price">₱399</p>
+<a href="#" class="col-add-btn" onclick="colAddToCart('Bulbasaur',399,this)">ADD TO CART</a>
+</div>
+</div>
+
+<div class="col-card">
+<div class="col-img anim-bounce">
+<img src="squirtle.png" alt="Squirtle" onerror="this.style.display='none';this.parentNode.innerHTML+='💧'"/>
+<span class="rarity-badge rarity-common">★ COMMON</span>
+</div>
+<div class="col-body">
+<p class="col-number">#007 — Tiny Turtle Pokémon</p>
+<p class="col-name">SQUIRTLE</p>
+<span class="col-type water">💧 Water</span>
+<p class="col-desc">The cheerful Tiny Turtle Pokémon leaping into action, set on a translucent water wave base. The shell detail on this figure is absolutely stunning up close.</p>
+<div class="col-stats">
+<div class="col-stat">Height: <span>0.5m</span></div>
+<div class="col-stat">Weight: <span>9kg</span></div>
+<div class="col-stat">Gen: <span>I</span></div>
+</div>
+<p class="col-price">₱399</p>
+<a href="#" class="col-add-btn" onclick="colAddToCart('Squirtle',399,this)">ADD TO CART</a>
+</div>
+</div>
+
+<div class="col-card">
+<div class="col-img anim-sway">
+<img src="meowth.png" alt="Meowth" onerror="this.style.display='none';this.parentNode.innerHTML+='🪙'"/>
+<span class="rarity-badge rarity-uncommon">★★ UNCOMMON</span>
+</div>
+<div class="col-body">
+<p class="col-number">#052 — Scratch Cat Pokémon</p>
+<p class="col-name">MEOWTH</p>
+<span class="col-type normal">🪙 Normal</span>
+<p class="col-desc">Team Rocket's lovable schemer, sitting atop a treasure chest overflowing with coins and gems. The gold coin on its forehead is painted with stunning metallic finish.</p>
+<div class="col-stats">
+<div class="col-stat">Height: <span>0.4m</span></div>
+<div class="col-stat">Weight: <span>4.2kg</span></div>
+<div class="col-stat">Gen: <span>I</span></div>
+</div>
+<p class="col-price">₱379</p>
+<a href="#" class="col-add-btn" onclick="colAddToCart('Meowth',379,this)">ADD TO CART</a>
+</div>
+</div>
+
+<div class="col-card">
+<div class="col-img anim-spin-float">
+<img src="mew.png" alt="Mew" onerror="this.style.display='none';this.parentNode.innerHTML+='🔮'"/>
+<span class="rarity-badge rarity-mythic">✦ MYTHIC</span>
+</div>
+<div class="col-body">
+<p class="col-number">#151 — New Species Pokémon</p>
+<p class="col-name">MEW</p>
+<span class="col-type psychic">🔮 Psychic</span>
+<p class="col-desc">The rarest figure in the entire PokéMerch lineup. Mew floats on a glowing psychic energy base, with soft translucent fins and an ethereal pink finish. Only a few remain in stock.</p>
+<div class="col-stats">
+<div class="col-stat">Height: <span>0.4m</span></div>
+<div class="col-stat">Weight: <span>4kg</span></div>
+<div class="col-stat">Gen: <span>I</span></div>
+</div>
+<p class="col-price">₱599</p>
+<a href="#" class="col-add-btn" onclick="colAddToCart('Mew',599,this)">ADD TO CART</a>
+</div>
+</div>
+
+<div class="col-card">
+<div class="col-img anim-drift">
+<img src="dragonite.png" alt="Dragonite" onerror="this.style.display='none';this.parentNode.innerHTML+='🐉'"/>
+<span class="rarity-badge rarity-epic">★★★★ EPIC</span>
+</div>
+<div class="col-body">
+<p class="col-number">#149 — Dragon Pokémon</p>
+<p class="col-name">DRAGONITE</p>
+<span class="col-type dragon">🐉 Dragon / Flying</span>
+<p class="col-desc">The gentle Dragon Pokémon standing tall in its classic friendly pose. Every scale and wing vein is hand-painted with extreme detail. A centerpiece for any serious collector.</p>
+<div class="col-stats">
+<div class="col-stat">Height: <span>2.2m</span></div>
+<div class="col-stat">Weight: <span>210kg</span></div>
+<div class="col-stat">Gen: <span>I</span></div>
+</div>
+<p class="col-price">₱549</p>
+<a href="#" class="col-add-btn" onclick="colAddToCart('Dragonite',549,this)">ADD TO CART</a>
+</div>
+</div>
+
+<div class="col-card">
+<div class="col-img anim-wave">
+<img src="rayquaza.png" alt="Rayquaza" onerror="this.style.display='none';this.parentNode.innerHTML+='🌪️'"/>
+<span class="rarity-badge rarity-legendary">⚡ LEGENDARY</span>
+</div>
+<div class="col-body">
+<p class="col-number">#384 — Sky High Pokémon</p>
+<p class="col-name">RAYQUAZA</p>
+<span class="col-type dragon">🌪️ Dragon / Flying</span>
+<p class="col-desc">The Sky High Pokémon in an epic coiling action pose, mounted on a dramatic display stand. Fully articulated body with green metallic scales and fierce yellow markings. The ultimate collector's piece.</p>
+<div class="col-stats">
+<div class="col-stat">Height: <span>7m</span></div>
+<div class="col-stat">Weight: <span>206.5kg</span></div>
+<div class="col-stat">Gen: <span>III</span></div>
+</div>
+<p class="col-price">₱699</p>
+<a href="#" class="col-add-btn" onclick="colAddToCart('Rayquaza',699,this)">ADD TO CART</a>
+</div>
+</div>
+</div>
+<div class="footer">
+© 2025 John Rey's PokéMerch &nbsp;•&nbsp; All Pokémon are trademarks of Nintendo / Game Freak &nbsp;•&nbsp; 📱 09671756325
+</div>
+<script>
+
+function updateCartBadge() {
+try {
+const cart = JSON.parse(localStorage.getItem('pkm_cart') || '[]');
+const total = cart.reduce((sum, i) => sum + i.qty, 0);
+const badge = document.getElementById('nav-cart-count');
+if (badge) badge.textContent = total;
+} catch {}
+}
+function colAddToCart(name, price, btn) {
+try {
+let cart = JSON.parse(localStorage.getItem('pkm_cart') || '[]');
+const existing = cart.find(i => i.name === name);
+if (existing) {
+existing.qty += 1;
+} else {
+cart.push({ name, price, qty: 1, size: '—' });
+}
+localStorage.setItem('pkm_cart', JSON.stringify(cart));
+btn.textContent = '✅ ADDED!';
+btn.style.backgroundColor = '#226622';
+setTimeout(() => {
+btn.textContent = 'ADD TO CART';
+btn.style.backgroundColor = '';
+}, 1500);
+updateCartBadge();
+} catch(e) { console.error(e); }
+}
+updateCartBadge();
+</script>
+</body>
+</html>

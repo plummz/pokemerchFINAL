@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout — John Rey's PokéMerch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="AddToCart.css" />
+</head>
+<body>
+
+  
+  <div class="top-banner">
+    🎮 SECURE CHECKOUT &nbsp;•&nbsp; FREE SHIPPING &nbsp;•&nbsp; COD AVAILABLE &nbsp;•&nbsp; 100% AUTHENTIC 🎮
+  </div>
+
+ 
+  <div class="navbar">
+    <div class="logo">JOHN REY'S <span>POKÉMERCH</span></div>
+    <a href="index.html" class="back-link">← BACK TO SHOP</a>
+  </div>
+
+  
+  <p class="page-title">🛒 CHECKOUT</p>
+  <p class="page-sub">Complete your order below — we'll handle the rest!</p>
+
+ 
+  <div class="checkout-wrapper">
+
+   
+    <div class="checkout-form">
+      <p class="form-title">📋 DELIVERY INFORMATION</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="e.g. Juan" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="e.g. Dela Cruz" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" placeholder="e.g. 09XX XXX XXXX" />
+      </div>
+      <div class="form-group">
+        <label>Email Address (optional)</label>
+        <input type="email" placeholder="e.g. juan@email.com" />
+      </div>
+      <div class="form-group">
+        <label>Region / Province</label>
+        <select>
+          <option value="">-- Select Region --</option>
+          <option>Metro Manila</option>
+          <option>Luzon</option>
+          <option>Visayas</option>
+          <option>Mindanao</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>City / Municipality</label>
+        <input type="text" placeholder="e.g. Iloilo City" />
+      </div>
+      <div class="form-group">
+        <label>Barangay</label>
+        <input type="text" placeholder="e.g. Brgy. San Jose" />
+      </div>
+      <div class="form-group">
+        <label>Complete Address</label>
+        <textarea placeholder="House No., Street, Subdivision, Landmark..."></textarea>
+      </div>
+      <hr class="section-divider" />
+      <p class="form-title">💳 PAYMENT METHOD</p>
+      <div class="payment-options">
+        <label class="payment-option">
+          <input type="radio" name="payment" checked />
+          💵 Cash on Delivery (COD)
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" />
+          📱 GCash
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" />
+          📱 Maya (PayMaya)
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" />
+          🏦 Bank Transfer
+        </label>
+      </div>
+      <hr class="section-divider" />
+      <p class="form-title">📝 ORDER NOTES (optional)</p>
+      <div class="form-group">
+        <textarea placeholder="Any special requests or notes for your order..."></textarea>
+      </div>
+      <button class="submit-btn">⚡ PLACE ORDER NOW</button>
+    </div>
+
+    
+    <div class="order-summary">
+      <div class="summary-card">
+        <p class="summary-title">🧾 ORDER SUMMARY</p>
+
+       
+        <div id="cart-items-list"></div>
+
+        <div class="summary-item">
+          <span>Shipping Fee</span>
+          <span style="color: #88ff88;">FREE</span>
+        </div>
+        <div class="summary-item">
+          <span>Voucher</span>
+          <span>— None —</span>
+        </div>
+        <div class="summary-total">
+          <span class="label">TOTAL</span>
+          <span class="amount" id="summary-total-amount">₱0.00</span>
+        </div>
+      </div>
+
+      <div class="guarantee-card">
+        <div class="guarantee-item">✅ 100% Authentic Figures</div>
+        <div class="guarantee-item">🚚 Free Shipping Nationwide</div>
+        <div class="guarantee-item">🔄 15-Day Return Policy</div>
+        <div class="guarantee-item">🛡️ 1 Year Warranty</div>
+        <div class="guarantee-item">📱 Contact: 09671756325</div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="footer">
+    © 2025 John Rey's PokéMerch &nbsp;•&nbsp; All Pokémon are trademarks of Nintendo / Game Freak &nbsp;•&nbsp; 📱 09671756325
+  </div>
+
+  <script>
+    
+    function loadCart() {
+      try {
+        return JSON.parse(localStorage.getItem('pkm_cart') || '[]');
+      } catch { return []; }
+    }
+
+    
+    function renderSummary() {
+      const cart = loadCart();
+      const container = document.getElementById('cart-items-list');
+      const totalEl   = document.getElementById('summary-total-amount');
+
+      if (!cart.length) {
+        container.innerHTML = `
+          <div class="summary-item">
+            <span class="item-name" style="color:#aaaacc;">No items in cart.</span>
+          </div>`;
+        totalEl.textContent = '₱0.00';
+        return;
+      }
+
+      let grandTotal = 0;
+      container.innerHTML = '';
+
+      cart.forEach((item, i) => {
+        const subtotal = item.price * item.qty;
+        grandTotal += subtotal;
+
+        const block = document.createElement('div');
+        block.style.borderBottom = '1px solid #1a1a3a';
+        block.style.paddingBottom = '10px';
+        block.style.marginBottom  = '10px';
+        block.innerHTML = `
+          <div class="summary-item" style="border-bottom:none;padding-bottom:2px;">
+            <span class="item-name">${item.name}</span>
+            <span style="color:#ff4444;font-family:'Press Start 2P',sans-serif;font-size:11px;">₱${item.price.toFixed(2)}</span>
+          </div>
+          <div class="summary-item" style="border-bottom:none;padding:2px 0;">
+            <span>Size</span>
+            <span>${item.size || '—'}</span>
+          </div>
+          <div class="summary-item" style="border-bottom:none;padding:2px 0;">
+            <span>Qty</span>
+            <span>${item.qty}</span>
+          </div>
+          <div class="summary-item" style="border-bottom:none;padding:2px 0;">
+            <span>Subtotal</span>
+            <span style="color:#f0f0f0;font-weight:bold;">₱${subtotal.toFixed(2)}</span>
+          </div>`;
+        container.appendChild(block);
+      });
+
+      totalEl.textContent = '₱' + grandTotal.toFixed(2);
+    }
+
+    
+    (function checkURLParams() {
+      const params = new URLSearchParams(window.location.search);
+      const name  = params.get('name');
+      const price = parseFloat(params.get('price'));
+      const qty   = parseInt(params.get('qty'))   || 1;
+      const size  = params.get('size') || '';
+
+      if (name && !isNaN(price)) {
+        
+        let cart = loadCart();
+        const existing = cart.find(i => i.name === name && i.size === size);
+        if (existing) {
+          existing.qty += qty;
+        } else {
+          cart.push({ name, price, qty, size });
+        }
+        localStorage.setItem('pkm_cart', JSON.stringify(cart));
+       
+        window.history.replaceState({}, '', 'checkout.html');
+      }
+    })();
+
+    renderSummary();
+  </script>
+
+</body>
+</html>
